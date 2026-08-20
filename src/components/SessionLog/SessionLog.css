@@ -1,0 +1,56 @@
+.session-log {
+  border:     1px solid var(--border);
+  background: var(--fill);
+  transition: opacity 0.4s ease, max-height 0.4s ease;
+  overflow:   hidden;
+}
+
+.is-ambient .session-log {
+  opacity:    0;
+  max-height: 0;
+  pointer-events: none;
+}
+
+.session-log__header {
+  display:         flex;
+  align-items:     center;
+  justify-content: space-between;
+  padding:         var(--sp-2) var(--sp-3);
+  background:      var(--surface);
+  border-bottom:   1px solid var(--border);
+}
+
+.session-log__title {
+  font-size:      var(--size-hud);
+  letter-spacing: var(--tracking-hud);
+  text-transform: uppercase;
+  color:          var(--text-dim);
+}
+
+.session-log__legend {
+  display:     flex;
+  align-items: center;
+  gap:         var(--sp-1);
+}
+
+.legend-box {
+  width:  10px;
+  height: 10px;
+  display: inline-block;
+}
+
+.legend-box--none { background: rgba(0, 229, 255, 0.05); }
+.legend-box--some { background: rgba(0, 229, 255, 0.22); }
+.legend-box--mid  { background: rgba(0, 229, 255, 0.55); }
+.legend-box--many { background: rgba(0, 229, 255, 0.82); }
+
+.legend-label {
+  font-size:  var(--size-hud);
+  color:      var(--text-dim);
+  white-space: nowrap;
+}
+
+.session-log__canvas-wrap {
+  padding:    var(--sp-3) var(--sp-4);
+  overflow-x: auto;
+}

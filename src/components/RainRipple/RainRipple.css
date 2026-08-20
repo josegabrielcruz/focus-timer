@@ -1,0 +1,16 @@
+.rain-ripple-canvas {
+  position:       fixed;
+  inset:          0;
+  width:          100%;
+  height:         100%;
+  pointer-events: none;
+  z-index:        0;        /* sits behind all app content */
+  opacity:        1;
+  transition:     opacity 1.2s ease;
+}
+
+/* Fade out ripples when either minimal mode or ripples are explicitly off */
+.is-minimal     .rain-ripple-canvas,
+.is-ripples-off .rain-ripple-canvas {
+  opacity: 0;
+}

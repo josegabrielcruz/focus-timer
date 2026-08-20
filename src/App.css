@@ -1,0 +1,163 @@
+.app {
+  display:        flex;
+  flex-direction: column;
+  min-height:     100svh;
+  max-width:      100%;
+  margin:         0 auto;
+  padding:        var(--sp-4);
+  gap:            0;
+  justify-content: center;
+}
+
+/* ── Header ──────────────────────────────────────────────────────────────── */
+
+.app-header {
+  display:         flex;
+  align-items:     center;
+  justify-content: space-between;
+  flex-wrap:       wrap;
+  gap:             var(--sp-3);
+  padding:         var(--sp-3) var(--sp-4);
+  background:      var(--surface);
+  border:          1px solid var(--border);
+  border-bottom:   none;
+  transition:      opacity 0.4s ease;
+}
+
+.is-ambient .app-header {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.app-title-group {
+  display:     flex;
+  align-items: center;
+  gap:         var(--sp-2);
+}
+
+.app-dot {
+  width:         6px;
+  height:        6px;
+  border-radius: 50%;
+  background:    var(--cyan);
+  box-shadow:    0 0 6px var(--glow-cyan);
+  animation:     dot-blink 2s steps(1) infinite;
+  flex-shrink:   0;
+}
+
+@keyframes dot-blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0.2; }
+}
+
+.app-title {
+  font-size:      var(--size-sm);
+  font-weight:    400;
+  letter-spacing: var(--tracking-hud);
+  text-transform: uppercase;
+  color:          var(--text-bright);
+}
+
+/* ── Stats ───────────────────────────────────────────────────────────────── */
+
+.app-stats {
+  display:     flex;
+  align-items: center;
+  gap:         var(--sp-4);
+  flex-wrap:   wrap;
+}
+
+.stat {
+  display:        flex;
+  flex-direction: column;
+  gap:            1px;
+}
+
+.stat__label {
+  font-size:      var(--size-hud);
+  letter-spacing: var(--tracking-hud);
+  text-transform: uppercase;
+  color:          var(--text-dim);
+  line-height:    1;
+}
+
+.stat__value {
+  font-size:  var(--size-xs);
+  color:      var(--cyan);
+  line-height: 1.2;
+}
+
+/* ── Main (timer arc) ────────────────────────────────────────────────────── */
+
+.app-main {
+  display:         flex;
+  align-items:     center;
+  justify-content: center;
+  background:      var(--surface);
+  border:          1px solid var(--border);
+  border-top:      none;
+  border-bottom:   none;
+}
+
+/* ── Footer ──────────────────────────────────────────────────────────────── */
+
+.app-footer {
+  display:     flex;
+  flex-wrap:   wrap;
+  gap:         var(--sp-3);
+  padding:     var(--sp-3) var(--sp-4);
+  font-size:   var(--size-hud);
+  color:       var(--text-dim);
+  letter-spacing: var(--tracking-wide);
+  transition:  opacity 0.4s ease;
+}
+
+.is-ambient .app-footer { opacity: 0; }
+
+/* ── Minimal mode ────────────────────────────────────────────────────────── */
+/* Hides all UI chrome — only the timer arc remains visible.
+   Click anywhere (or press N) to exit.                                      */
+
+.is-minimal .app-header,
+.is-minimal .controls,
+.is-minimal .session-log,
+.is-minimal .app-footer {
+  opacity:        0;
+  pointer-events: none;
+  transition:     opacity 0.6s ease;
+}
+
+/* In minimal mode make the background transparent so the arc floats */
+.is-minimal .app-main {
+  background:  transparent;
+  border-color: transparent;
+}
+
+/* Cursor hint so the user knows they can click to exit */
+.is-minimal {
+  cursor: pointer;
+}
+
+/* The arc itself stays fully visible in minimal mode */
+.is-minimal .timer-arc-wrapper {
+  transform: scale(1.1);
+}
+
+/* ── Reduced motion ───────────────────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  .app-dot { animation: none; }
+  .app-header, .app-footer, .controls, .session-log {
+    transition: none;
+  }
+}
+
+/* ── Mobile ──────────────────────────────────────────────────────────────── */
+
+@media (max-width: 400px) {
+  .app {
+    padding: var(--sp-2);
+  }
+  .app-stats { gap: var(--sp-3); }
+  .app-footer { display: none; }
+}

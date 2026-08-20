@@ -1,0 +1,157 @@
+.controls {
+  display:        flex;
+  flex-direction: column;
+  gap:            var(--sp-2);
+  padding:        var(--sp-3) var(--sp-4);
+  background:     var(--surface);
+  border:         1px solid var(--border);
+  border-top:     none;
+  transition:     opacity 0.4s ease;
+}
+
+.is-ambient .controls {
+  opacity: 0.08;
+}
+
+.is-ambient .controls:hover {
+  opacity: 1;
+  transition: opacity 0.2s ease;
+}
+
+/* ── Rows ─────────────────────────────────────────────────────────────── */
+
+.ctrl-row {
+  display:     flex;
+  align-items: center;
+  flex-wrap:   wrap;
+  gap:         var(--sp-2);
+}
+
+.ctrl-row--sound {
+  padding-top: var(--sp-2);
+  border-top:  1px solid var(--border);
+}
+
+/* ── Buttons ─────────────────────────────────────────────────────────── */
+
+.ctrl-btn {
+  background:     var(--fill);
+  border:         1px solid var(--border);
+  color:          var(--text-dim);
+  font-size:      var(--size-hud);
+  letter-spacing: var(--tracking-hud);
+  text-transform: uppercase;
+  padding:        var(--sp-1) var(--sp-3);
+  transition:     color 0.15s, border-color 0.15s, background 0.15s;
+}
+
+.ctrl-btn:hover:not(:disabled) {
+  border-color: var(--border-bright);
+  color:        var(--cyan);
+}
+
+.ctrl-btn:disabled {
+  opacity: 0.35;
+  cursor:  not-allowed;
+}
+
+.ctrl-btn--primary {
+  font-size:    var(--size-xs);
+  padding:      var(--sp-1) var(--sp-4);
+  border-color: rgba(0, 229, 255, 0.40);
+  color:        var(--cyan);
+}
+
+.ctrl-btn--ambient.is-active,
+.ctrl-btn--sound.is-active {
+  background:   rgba(0, 229, 255, 0.08);
+  border-color: var(--cyan);
+  color:        var(--cyan);
+  box-shadow:   0 0 8px var(--glow-cyan);
+}
+
+/* Toggle buttons (on/off state) */
+.ctrl-toggle {
+  background:     transparent;
+  border:         1px solid var(--border);
+  color:          var(--text-dim);
+  font-size:      var(--size-hud);
+  font-family:    var(--font-mono);
+  letter-spacing: var(--tracking-hud);
+  text-transform: uppercase;
+  padding:        var(--sp-1) var(--sp-2);
+  transition:     color 0.15s, border-color 0.15s;
+}
+
+.ctrl-toggle.is-on {
+  border-color: rgba(0, 229, 255, 0.45);
+  color:        var(--cyan);
+}
+
+.ctrl-toggle:disabled {
+  opacity: 0.3;
+  cursor:  not-allowed;
+}
+
+/* ── Inline group (toggle + select) ─────────────────────────────────── */
+
+.ctrl-group {
+  display: flex;
+  align-items: center;
+}
+
+.ctrl-group .ctrl-toggle {
+  border-right: none;
+}
+
+/* ── Select ──────────────────────────────────────────────────────────── */
+
+.ctrl-select {
+  -webkit-appearance: none;
+  appearance:  none;
+  background:  var(--fill);
+  border:      1px solid var(--border);
+  color:       var(--cyan);
+  font-family: var(--font-mono);
+  font-size:   var(--size-hud);
+  letter-spacing: var(--tracking-wide);
+  padding:     var(--sp-1) var(--sp-2);
+  cursor:      pointer;
+  outline:     none;
+}
+
+.ctrl-select:disabled { opacity: 0.3; cursor: not-allowed; }
+
+/* ── Slider + field ──────────────────────────────────────────────────── */
+
+.ctrl-field {
+  display:     flex;
+  align-items: center;
+  gap:         var(--sp-2);
+}
+
+.ctrl-label {
+  font-size:      var(--size-hud);
+  letter-spacing: var(--tracking-hud);
+  text-transform: uppercase;
+  color:          var(--text-dim);
+}
+
+.ctrl-slider {
+  -webkit-appearance: none;
+  appearance:  none;
+  height:      3px;
+  width:       72px;
+  background:  var(--border);
+  cursor:      pointer;
+}
+
+.ctrl-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width:      10px;
+  height:     10px;
+  background: var(--cyan);
+  cursor:     pointer;
+}
+
+.ctrl-slider:disabled { opacity: 0.3; cursor: not-allowed; }
