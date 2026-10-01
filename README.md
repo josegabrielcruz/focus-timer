@@ -2,6 +2,7 @@
 
 A focus timer that doubles as an ambient environment. It synthesizes sound — pink noise, binaural beats, an evolving FM drone — entirely in the browser while you work. Session history persists locally as a heatmap.
 
+**[Live Demo](https://josegabrielcruz.github.io/focus-timer)**
 
 ---
 
